@@ -1,3 +1,7 @@
+const dns = require('node:dns');
+
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 const express = require('express');
 require('dotenv').config();
 const app = express();
@@ -35,6 +39,7 @@ app.use('/logout', require('./routes/logout'));
 
 app.use(verifyJWT)
 app.use('/employees', require('./routes/api/employees'));
+app.use('/user', require('./routes/api/user'));
 
 
 app.use((req,res) => {
